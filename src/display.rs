@@ -27,14 +27,21 @@ pub fn print_cat_header() {
 }
 
 pub fn print_response_time(duration_ms: u64) {
-    println!("\n⏱️  Response time: {}ms\n", duration_ms.to_string().bright_blue());
+    println!(
+        "\n⏱️  Response time: {}ms\n",
+        duration_ms.to_string().bright_blue()
+    );
 }
 
 pub fn print_headers(response: &HttpResponse) {
     println!("\n📋 Response Headers:");
     println!("{}", "=".repeat(50));
     for (name, value) in response.headers.iter() {
-        println!("{}: {}", name.as_str().yellow(), value.to_str().unwrap_or(""));
+        println!(
+            "{}: {}",
+            name.as_str().yellow(),
+            value.to_str().unwrap_or("")
+        );
     }
     println!("{}\n", "=".repeat(50));
 }

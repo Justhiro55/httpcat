@@ -11,11 +11,7 @@ pub struct HttpResponse {
     pub duration: Duration,
 }
 
-pub fn send_request(
-    url: &str,
-    method: &str,
-    request_headers: &[String],
-) -> Result<HttpResponse> {
+pub fn send_request(url: &str, method: &str, request_headers: &[String]) -> Result<HttpResponse> {
     let client = Client::builder()
         .timeout(Duration::from_secs(30))
         .build()
@@ -27,8 +23,7 @@ pub fn send_request(
         if parts.len() == 2 {
             let name = HeaderName::from_bytes(parts[0].trim().as_bytes())
                 .context("Invalid header name")?;
-            let value = HeaderValue::from_str(parts[1].trim())
-                .context("Invalid header value")?;
+            let value = HeaderValue::from_str(parts[1].trim()).context("Invalid header value")?;
             headers.insert(name, value);
         }
     }

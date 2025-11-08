@@ -6,11 +6,7 @@ pub fn image_to_ascii(img: &DynamicImage, width: u32) -> String {
     let aspect_ratio = img.height() as f32 / img.width() as f32;
     let height = (width as f32 * aspect_ratio * 0.5) as u32;
 
-    let resized = img.resize_exact(
-        width,
-        height,
-        image::imageops::FilterType::Lanczos3,
-    );
+    let resized = img.resize_exact(width, height, image::imageops::FilterType::Lanczos3);
 
     let gray = resized.to_luma8();
     let mut ascii_art = String::new();
