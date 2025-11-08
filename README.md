@@ -10,6 +10,10 @@
 
 Send HTTP requests and get adorable cat images from [http.cat](https://http.cat) displayed right in your terminal based on the response status code.
 
+<p align="center">
+  <img src="documents/httpcat.png" alt="httpcat demo" width="600">
+</p>
+
 ## Installation
 
 ### Using Cargo
