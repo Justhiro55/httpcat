@@ -3,6 +3,10 @@ name = "httpcat"
 version = "0.1.0"
 edition = "2021"
 description = "HTTP client that shows cat images based on status codes"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Justhiro55/httpcat"
+keywords = ["http", "cli", "cat", "terminal", "image"]
+categories = ["command-line-utilities"]
 
 [dependencies]
 clap = { version = "4.5", features = ["derive"] }
