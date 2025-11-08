@@ -1,33 +1,63 @@
 # httpcat
 
-A CLI tool that sends HTTP requests and displays cat images in your terminal based on the response status code.
+[![Crates.io](https://img.shields.io/crates/v/httpcat.svg)](https://crates.io/crates/httpcat)
+[![Downloads](https://img.shields.io/crates/d/httpcat.svg)](https://crates.io/crates/httpcat)
+[![CI](https://github.com/Justhiro55/httpcat/workflows/CI/badge.svg)](https://github.com/Justhiro55/httpcat/actions)
+[![License](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg)](LICENSE)
+[![Rust](https://img.shields.io/badge/rust-1.70%2B-orange.svg)](https://www.rust-lang.org/)
 
-## Features
+> A CLI HTTP client that shows cat images based on status codes 🐱
 
-- Send HTTP requests and get responses
-- Fetch and display cat images from https://http.cat based on status codes
-- Display images in full color or ASCII art in the terminal
-- Measure and display response time
-- Optional display of response headers and body
+Send HTTP requests and get adorable cat images from [http.cat](https://http.cat) displayed right in your terminal based on the response status code.
 
 ## Installation
 
-### Build from source
+### Using Cargo
 
 ```bash
-git clone https://github.com/yourusername/httpcat.git
-cd httpcat
-cargo build --release
+cargo install httpcat
 ```
 
-The binary will be generated at `target/release/httpcat`.
+### From source
+
+```bash
+git clone https://github.com/Justhiro55/httpcat
+cd httpcat
+cargo install --path .
+```
 
 ## Usage
 
-### Basic usage
+```bash
+$ httpcat https://example.com
+
+🌐 Requesting: https://example.com
+
+⏳ Loading...
+
+✅ 200 OK
+
+🐱 Here's your cat:
+
+[cat image displayed in terminal]
+
+⏱️  Response time: 234ms
+```
 
 ```bash
-httpcat https://example.com
+$ httpcat https://example.com/notfound
+
+🌐 Requesting: https://example.com/notfound
+
+⏳ Loading...
+
+❌ 404 Not Found
+
+🐱 Here's your cat:
+
+[404 cat image]
+
+⏱️  Response time: 156ms
 ```
 
 ### Options
@@ -35,12 +65,6 @@ httpcat https://example.com
 ```bash
 httpcat [OPTIONS] <URL>
 ```
-
-#### Arguments
-
-- `<URL>` - Target URL to send the request to (required)
-
-#### Options
 
 - `-X, --method <METHOD>` - HTTP method to use (default: GET)
 - `--size <N>` - Image width in terminal characters (default: 60)
@@ -54,77 +78,34 @@ httpcat [OPTIONS] <URL>
 
 ### Examples
 
-#### GET request
-
-```bash
-httpcat https://example.com
-```
-
-#### POST request
-
+**POST request:**
 ```bash
 httpcat -X POST https://api.example.com/data
 ```
 
-#### Request with custom headers
-
+**With custom headers:**
 ```bash
 httpcat -H "Authorization: Bearer token123" https://api.example.com
 ```
 
-#### Show response headers and body
-
+**Show response details:**
 ```bash
 httpcat --headers --body https://example.com
 ```
 
-#### Display as ASCII art
-
+**ASCII art mode:**
 ```bash
 httpcat --ascii https://example.com
 ```
 
-#### Check status only (no image)
-
+**Status check only:**
 ```bash
 httpcat --no-image https://example.com
 ```
 
-#### Change image size
-
-```bash
-httpcat --size 80 https://example.com
-```
-
-## Output example
-
-```
-🌐 Requesting: https://example.com
-
-⏳ Loading...
-
-✅ 200 OK
-
-🐱 Here's your cat:
-
-[cat image]
-
-⏱️  Response time: 234ms
-```
-
-## Dependencies
-
-- [clap](https://github.com/clap-rs/clap) - CLI argument parsing
-- [reqwest](https://github.com/seanmonstar/reqwest) - HTTP client
-- [tokio](https://github.com/tokio-rs/tokio) - Async runtime
-- [image](https://github.com/image-rs/image) - Image processing
-- [viuer](https://github.com/atanunq/viuer) - Terminal image display
-- [anyhow](https://github.com/dtolnay/anyhow) - Error handling
-- [colored](https://github.com/colored-rs/colored) - Colored output
-
 ## License
 
-See [LICENSE](LICENSE) file for details.
+Licensed under either of MIT or Apache-2.0 at your option. See [LICENSE](LICENSE) for details.
 
 ## Credits
 
