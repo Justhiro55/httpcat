@@ -7,18 +7,16 @@ pub fn print_request_info(url: &str) {
 }
 
 pub fn print_response_status(response: &HttpResponse) {
-    let status_str = format!("{} {}", response.status, response.status_text);
-
     let colored_status = if response.status >= 200 && response.status < 300 {
-        format!("✅ {}", status_str).green()
+        format!("✅ {}", response.status_text).green()
     } else if response.status >= 300 && response.status < 400 {
-        format!("➡️  {}", status_str).yellow()
+        format!("➡️  {}", response.status_text).yellow()
     } else if response.status >= 400 && response.status < 500 {
-        format!("❌ {}", status_str).red()
+        format!("❌ {}", response.status_text).red()
     } else if response.status >= 500 {
-        format!("💥 {}", status_str).bright_red()
+        format!("💥 {}", response.status_text).bright_red()
     } else {
-        format!("ℹ️  {}", status_str).white()
+        format!("ℹ️  {}", response.status_text).white()
     };
 
     println!("{}\n", colored_status);
