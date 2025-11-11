@@ -107,6 +107,10 @@ httpcat --ascii https://example.com
 httpcat --no-image https://example.com
 ```
 
+## Terminal Compatibility
+
+Image display has been tested on terminals like iTerm and Kitty, but has not been fully verified on other terminals. Image quality may vary depending on your terminal, and in some cases, using the `--ascii` option for ASCII art display may be recommended.
+
 ## License
 
 Licensed under either of MIT or Apache-2.0 at your option. See [LICENSE](LICENSE) for details.
